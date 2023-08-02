@@ -25,21 +25,39 @@
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest watch"
+    "test:watch": "vitest watch",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@nuxt/kit": "^3.6.5"
   },
   "devDependencies": {
-    "@types/node": "^18.17.1",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxt/module-builder": "^0.4.0",
     "@nuxt/schema": "^3.6.5",
     "@nuxt/test-utils": "^3.6.5",
+    "@storybook/addon-essentials": "^7.2.0",
+    "@storybook/addon-interactions": "^7.2.0",
+    "@storybook/addon-links": "^7.2.0",
+    "@storybook/blocks": "^7.2.0",
+    "@storybook/testing-library": "^0.2.0",
+    "@storybook/vue3": "^7.2.0",
+    "@storybook/vue3-vite": "^7.2.0",
+    "@types/node": "^18.17.1",
     "changelogen": "^0.5.4",
     "eslint": "^8.46.0",
+    "eslint-plugin-storybook": "^0.6.13",
     "nuxt": "^3.6.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.2.0",
     "vitest": "^0.33.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }
