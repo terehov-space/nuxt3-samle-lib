@@ -1,7 +1,9 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, installModule } from '@nuxt/kit'
 
-// Module options TypeScript interface definition
-export interface ModuleOptions {}
+// Module options TypeScript inteface definition
+export interface ModuleOptions {
+  css: boolean;
+}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -9,11 +11,23 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'rbLib'
   },
   // Default configuration options of the Nuxt module
-  defaults: {},
-  setup (options, nuxt) {
+  defaults: {
+    css: true
+  },
+
+  async setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-    addPlugin(resolver.resolve('./runtime/plugin'))
+    // It will add @nuxtjs/tailwindcss to the project
+    await installModule('@nuxtjs/tailwindcss', {
+      /**
+       * Here, you specify where your config is.
+       * By default, the module have a configPath relative
+       * to the current path, ie the playground !
+       * (or the app using your module)
+       */
+      cssPath: options.css ? resolver.resolve("./runtime/assets/css/tailwind.css") : false,
+      configPath: resolver.resolve('../tailwind.config'),
+    })
   }
 })

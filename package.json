@@ -38,6 +38,7 @@
     "@nuxt/module-builder": "^0.4.0",
     "@nuxt/schema": "^3.6.5",
     "@nuxt/test-utils": "^3.6.5",
+    "@nuxtjs/tailwindcss": "^6.8.0",
     "@storybook/addon-essentials": "^7.2.0",
     "@storybook/addon-interactions": "^7.2.0",
     "@storybook/addon-links": "^7.2.0",
@@ -52,6 +53,7 @@
     "nuxt": "^3.6.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.64.2",
     "storybook": "^7.2.0",
     "vitest": "^0.33.0"
   },

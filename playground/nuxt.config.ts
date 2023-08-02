@@ -1,5 +1,7 @@
 export default defineNuxtConfig({
   modules: ['../src/module'],
-  myModule: {},
+  rbLib: {
+    css: true
+  },
   devtools: { enabled: true }
 })
