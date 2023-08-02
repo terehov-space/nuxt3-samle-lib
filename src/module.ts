@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver, installModule } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, installModule, addComponentsDir } from '@nuxt/kit'
 
 // Module options TypeScript inteface definition
 export interface ModuleOptions {
@@ -28,6 +28,13 @@ export default defineNuxtModule<ModuleOptions>({
        */
       cssPath: options.css ? resolver.resolve("./runtime/assets/css/tailwind.css") : false,
       configPath: resolver.resolve('../tailwind.config'),
+    })
+
+    await addComponentsDir({
+      path: resolver.resolve('./runtime/components'),
+      pathPrefix: false,
+      prefix: '',
+      global: true
     })
   }
 })
